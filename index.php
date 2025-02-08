@@ -43,6 +43,7 @@ switch($metodo){
     echo "Método no permitido";
 }   
 
+// Creando la función para consultar los datos y por id
 function consulta($conexion,$id){
     $sql = ($id === null) ? "SELECT * FROM usuarios" : "SELECT * FROM usuario WHERE id = $id";
     $resultado = $conexion->query($sql);
@@ -56,6 +57,7 @@ function consulta($conexion,$id){
     }
 }
 
+// Creando la función para insertar datos
 function insertar($conexion){
     $dato = json_decode(file_get_contents('php://input'),true);
     $nombre = $dato['nombre'];
@@ -71,6 +73,7 @@ function insertar($conexion){
     }
 }
 
+//Creando la función para borrar datos por id
 function borrar($conexion,$id){
 
     $sql = "DELETE FROM usuarios WHERE id = $id";
@@ -83,6 +86,7 @@ function borrar($conexion,$id){
     }
 }
 
+// Creando función para actualizar datos existentes.
 function actualizar($conexion,$id){
     $dato = json_decode(file_get_contents('php://input'),true);
     $nombre = $dato['nombre'];
